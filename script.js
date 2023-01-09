@@ -1,4 +1,8 @@
 const transactionsUl = document.querySelector('#transactions')
+const incomeDisplay = document.querySelector('#money-plus')
+const expenseDisplay = document.querySelector('#money-minus')
+const balanceDisplay = document.querySelector('#balance')
+console.log({ incomeDisplay, expenseDisplay, balanceDisplay })
 const dummyTransactions = [
   {
     id: 1,
@@ -41,6 +45,14 @@ const updateBalanceValues = () => {
   const income = transactionsAmount
     .filter(value => value > 0)
     .reduce((accumulator, value) => accumulator + value, 0)
+    .toFixed(2)
+
+  const expense = transactionsAmount
+    .filter(value => value < 0)
+    .reduce((accumulator, value) => accumulator + value, 0)
+    .toFixed(2)
+  console.log(income)
+  console.log(expense)
 }
 const init = () => {
   dummyTransactions.forEach(addTransactionIntoDOM)
